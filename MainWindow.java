@@ -54,7 +54,7 @@ public class MainWindow
                  String categorie = Categorie.getText();
                  String s2 = Pret.getText();
                  double pret = Double.parseDouble(s2);
-                 if (!model.isEmpty() && !categorie.isEmpty() && viteza!=0 && pret==0 ) {
+                 if (!model.isEmpty() && !categorie.isEmpty() && viteza!=0 && pret!=0 ) {
                      for (int i = 0; i < moto.size(); i++)
                          if (moto.get(i).getModel().equals(model)) Este = true;
                      if (!Este) {
