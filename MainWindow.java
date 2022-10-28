@@ -3,11 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import Proiect.Motocicleta;
 
 public class MainWindow
 {
-
+    private JPanel exit;
     private JPanel panel;
     private JButton Iesire;
     private JButton Adauga;
@@ -28,6 +27,8 @@ public class MainWindow
     private JLabel PretM;
     private JList ListaOB;
     private JLabel CatalogMotociclete1;
+
+    //Logging log2 = Logging.getInstance();
 
     public void Restart(ActionListener a1, ActionListener a2, ActionListener a3, ActionListener a4)
     {
@@ -54,16 +55,24 @@ public class MainWindow
                  String categorie = Categorie.getText();
                  String s2 = Pret.getText();
                  double pret = Double.parseDouble(s2);
-                 if (!model.isEmpty() && !categorie.isEmpty() && viteza!=0 && pret!=0 ) {
+                 if (!model.isEmpty() && !categorie.isEmpty() && viteza>0 && pret>0 ) {
                      for (int i = 0; i < moto.size(); i++)
                          if (moto.get(i).getModel().equals(model)) Este = true;
                      if (!Este) {
                          Motocicleta m1 = new Motocicleta(model, viteza, categorie, pret);
                          moto.add(m1);
                          Rezultat.setText(m1.toString());
-                     } else Rezultat.setText("Exista deja acest model");
+                     } else {
+                         Rezultat.setText("Exista deja acest model");
+                         Logging log3 = Logging.getInstance();
+                         log3.setMessage("Adaugare model existent\n");
+                     }
                  }
-                 else Rezultat.setText("Date invalide");
+                 else {
+                     Rezultat.setText("Date invalide");
+                     Logging log = Logging.getInstance();
+                     log.setMessage("Au fost introduse date invalide");
+                 }
                  Model.setText(null);
                  Viteza.setText(null);
                  Categorie.setText(null);
@@ -80,6 +89,8 @@ public class MainWindow
                      {
                          Rezultat.setText("Eroare: Catalog gol, nu se poate efectua cautarea");
                          Categorie.setText(null);
+                         Logging log2 = Logging.getInstance();
+                         log2.setMessage("Cautare in catalog gol\n");
                      }
                      else {
                          Model.setText(null);
@@ -90,7 +101,11 @@ public class MainWindow
                              for (int i = 0; i < moto.size(); i++)
                                  if (moto.get(i).getCategorie().equals(motoCautat)) moto2.add(moto.get(i));
                              ListaOB.setListData(moto2.toArray());
-                         } else Rezultat.setText("Date invalide");
+                         } else {
+                             Rezultat.setText("Date invalide");
+                             Logging log4 = Logging.getInstance();
+                             log4.setMessage("Introducere date invalide\n");
+                         }
                          Next.setEnabled(false);
                          Categorie.setText(null);
                      }
@@ -115,9 +130,17 @@ public class MainWindow
                             }
                         }
                         Next.setEnabled(false);
-                        if (!EsteMoto) Rezultat.setText("Nu exista modelul");
+                        if (!EsteMoto) {
+                            Rezultat.setText("Nu exista modelul");
+                            Logging log4 = Logging.getInstance();
+                            log4.setMessage("Cautare model inexistent\n");
+                        }
                     }
-                    else Rezultat.setText("Date Invalide");
+                    else {
+                        Rezultat.setText("Date Invalide");
+                        Logging log5 = Logging.getInstance();
+                        log5.setMessage("Introducere date invalide\n");
+                    }
                     Model.setText(null);
              }
          };
@@ -130,6 +153,8 @@ public class MainWindow
                  {
                      Rezultat.setText("Eroare: Catalog gol, nu se poate efectua eliminarea");
                      Model.setText(null);
+                     Logging log6 = Logging.getInstance();
+                     log6.setMessage("Eliminare din catalog gol\n");
                  }
                  else
                  {
@@ -146,9 +171,17 @@ public class MainWindow
                                  Next.setEnabled(false);
                              }
                          }
-                         if (!EsteEliminat) Rezultat.setText("Modelul nu exista in catalog");
+                         if (!EsteEliminat) {
+                             Rezultat.setText("Modelul nu exista in catalog");
+                             Logging log6 = Logging.getInstance();
+                             log6.setMessage("Eliminare model inexistent\n");
+                         }
                      }
-                     else Rezultat.setText("Date Invalide");
+                     else {
+                         Rezultat.setText("Date Invalide");
+                         Logging log7 = Logging.getInstance();
+                         log7.setMessage("Introducere date invalide\n");
+                     }
                      Model.setText(null);
                  }
              }
@@ -190,7 +223,11 @@ public class MainWindow
                         contor++;
                 }
                 suma=suma/contor;
-                if (contor<2) Rezultat.setText("Eroare: Prea putine modele");
+                if (contor<2) {
+                    Rezultat.setText("Eroare: Prea putine modele");
+                    Logging log8 = Logging.getInstance();
+                    log8.setMessage("Media preturilor pentru un numar insuficient de elemente\n");
+                }
                 else Rezultat.setText("Media Preturilor: " + suma);
              }
          });
@@ -218,7 +255,41 @@ public class MainWindow
 
          Iesire.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
-                 System.exit(0);
+                 //System.exit(0);
+                 JDialog exit = new JDialog();
+                 exit.setLayout(new FlowLayout());
+                 //exit.setVisible(true);
+                 //exit.add(new JLabel("Sunteti sigur ca vreti sa iesiti?"));
+                 exit.add(new JLabel("      Inchideti aplicatia?      "));
+                 JButton da = new JButton("da");
+                 //da.setSize(50,50);
+                 //da.setPreferredSize(new Dimension(50,50));
+                 exit.add(da);
+                 da.setPreferredSize(new Dimension(50,50));
+                 JButton nu = new JButton("nu");
+                 //nu.setSize(50, 50);
+                 //nu.setPreferredSize(new Dimension(50,50));
+                 exit.add(nu);
+                 nu.setPreferredSize(new Dimension(50,50));
+                 exit.setSize(200, 150);
+                 exit.setLocationRelativeTo(null);
+                 exit.setVisible(true);
+
+                 da.addActionListener ( new ActionListener()
+                 {
+                     public void actionPerformed( ActionEvent e )
+                     {
+                         System.exit(0);
+                     }
+                 });
+
+                 nu.addActionListener ( new ActionListener()
+                 {
+                     public void actionPerformed( ActionEvent e )
+                     {
+                         exit.setVisible(false);
+                     }
+                 });
              }
          });
      }
@@ -230,6 +301,7 @@ public class MainWindow
         //frame.pack();
         frame.setSize(1000,600);
         main.Next.setVisible(false);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
