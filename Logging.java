@@ -1,7 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Logging {
+public class Logging extends Message{
     private static Logging instance;
     private Logging(){
 
@@ -12,7 +12,7 @@ public class Logging {
         }
         return instance;
     }
-    public void setMessage(String msg){
+    void setMessage(String msg){
         try {
             FileWriter myWriter = new FileWriter("Logging.txt", true);
             myWriter.write(msg);

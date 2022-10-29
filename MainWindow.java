@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class MainWindow
 {
-    private JPanel exit;
     private JPanel panel;
     private JButton Iesire;
     private JButton Adauga;
@@ -27,8 +26,6 @@ public class MainWindow
     private JLabel PretM;
     private JList ListaOB;
     private JLabel CatalogMotociclete1;
-
-    //Logging log2 = Logging.getInstance();
 
     public void Restart(ActionListener a1, ActionListener a2, ActionListener a3, ActionListener a4)
     {
@@ -255,20 +252,13 @@ public class MainWindow
 
          Iesire.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
-                 //System.exit(0);
                  JDialog exit = new JDialog();
                  exit.setLayout(new FlowLayout());
-                 //exit.setVisible(true);
-                 //exit.add(new JLabel("Sunteti sigur ca vreti sa iesiti?"));
                  exit.add(new JLabel("      Inchideti aplicatia?      "));
                  JButton da = new JButton("da");
-                 //da.setSize(50,50);
-                 //da.setPreferredSize(new Dimension(50,50));
                  exit.add(da);
                  da.setPreferredSize(new Dimension(50,50));
                  JButton nu = new JButton("nu");
-                 //nu.setSize(50, 50);
-                 //nu.setPreferredSize(new Dimension(50,50));
                  exit.add(nu);
                  nu.setPreferredSize(new Dimension(50,50));
                  exit.setSize(200, 150);
