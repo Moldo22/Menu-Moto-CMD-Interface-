@@ -1,3 +1,5 @@
+package Package;
+
 public class Motocicleta //definirea calsei
 {
 	private String _model;

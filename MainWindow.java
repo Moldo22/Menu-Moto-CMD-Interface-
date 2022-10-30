@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import Package.Motocicleta;
+import Package.Logging;
 
 public class MainWindow
 {
@@ -52,7 +54,7 @@ public class MainWindow
                  String categorie = Categorie.getText();
                  String s2 = Pret.getText();
                  double pret = Double.parseDouble(s2);
-                 if (!model.isEmpty() && !categorie.isEmpty() && viteza>0 && pret>0 ) {
+                 if (!model.isEmpty() && !categorie.isEmpty() && (viteza>0 || s.isEmpty()) && (pret>0 || s2.isEmpty())) {
                      for (int i = 0; i < moto.size(); i++)
                          if (moto.get(i).getModel().equals(model)) Este = true;
                      if (!Este) {
@@ -62,13 +64,15 @@ public class MainWindow
                      } else {
                          Rezultat.setText("Exista deja acest model");
                          Logging log3 = Logging.getInstance();
-                         log3.setMessage("Adaugare model existent\n");
+                         log3.setMessage("~ERROR: Adaugare~\n");
+                         log3.setMessage("Adaugare model existent\n\n");
                      }
                  }
                  else {
                      Rezultat.setText("Date invalide");
                      Logging log = Logging.getInstance();
-                     log.setMessage("Au fost introduse date invalide");
+                     log.setMessage("~ERROR: Adaugare~\n");
+                     log.setMessage("Au fost introduse date invalide\n\n");
                  }
                  Model.setText(null);
                  Viteza.setText(null);
@@ -87,7 +91,8 @@ public class MainWindow
                          Rezultat.setText("Eroare: Catalog gol, nu se poate efectua cautarea");
                          Categorie.setText(null);
                          Logging log2 = Logging.getInstance();
-                         log2.setMessage("Cautare in catalog gol\n");
+                         log2.setMessage("~ERROR: Cautare~\n");
+                         log2.setMessage("Cautare in catalog gol\n\n");
                      }
                      else {
                          Model.setText(null);
@@ -101,7 +106,8 @@ public class MainWindow
                          } else {
                              Rezultat.setText("Date invalide");
                              Logging log4 = Logging.getInstance();
-                             log4.setMessage("Introducere date invalide\n");
+                             log4.setMessage("~ERROR: Cautare~\n");
+                             log4.setMessage("Introducere date invalide\n\n");
                          }
                          Next.setEnabled(false);
                          Categorie.setText(null);
@@ -130,13 +136,15 @@ public class MainWindow
                         if (!EsteMoto) {
                             Rezultat.setText("Nu exista modelul");
                             Logging log4 = Logging.getInstance();
-                            log4.setMessage("Cautare model inexistent\n");
+                            log4.setMessage("~ERROR: Actualizare~\n");
+                            log4.setMessage("Cautare model inexistent\n\n");
                         }
                     }
                     else {
                         Rezultat.setText("Date Invalide");
                         Logging log5 = Logging.getInstance();
-                        log5.setMessage("Introducere date invalide\n");
+                        log5.setMessage("~ERROR: Actualizare~\n");
+                        log5.setMessage("Introducere date invalide\n\n");
                     }
                     Model.setText(null);
              }
@@ -151,7 +159,8 @@ public class MainWindow
                      Rezultat.setText("Eroare: Catalog gol, nu se poate efectua eliminarea");
                      Model.setText(null);
                      Logging log6 = Logging.getInstance();
-                     log6.setMessage("Eliminare din catalog gol\n");
+                     log6.setMessage("~ERROR: Eliminare~\n");
+                     log6.setMessage("Eliminare din catalog gol\n\n");
                  }
                  else
                  {
@@ -171,13 +180,15 @@ public class MainWindow
                          if (!EsteEliminat) {
                              Rezultat.setText("Modelul nu exista in catalog");
                              Logging log6 = Logging.getInstance();
-                             log6.setMessage("Eliminare model inexistent\n");
+                             log6.setMessage("~ERROR: Eliminare\n");
+                             log6.setMessage("Eliminare model inexistent\n\n");
                          }
                      }
                      else {
                          Rezultat.setText("Date Invalide");
                          Logging log7 = Logging.getInstance();
-                         log7.setMessage("Introducere date invalide\n");
+                         log7.setMessage("~ERROR: Eliminare~\n");
+                         log7.setMessage("Introducere date invalide\n\n");
                      }
                      Model.setText(null);
                  }
@@ -223,7 +234,8 @@ public class MainWindow
                 if (contor<2) {
                     Rezultat.setText("Eroare: Prea putine modele");
                     Logging log8 = Logging.getInstance();
-                    log8.setMessage("Media preturilor pentru un numar insuficient de elemente\n");
+                    log8.setMessage("~ERROR: Medie~\n");
+                    log8.setMessage("Media preturilor pentru un numar insuficient de elemente\n\n");
                 }
                 else Rezultat.setText("Media Preturilor: " + suma);
              }
