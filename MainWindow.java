@@ -2,9 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import Package.Motocicleta;
 import Package.Logging;
+
+import static sun.security.util.KnownOIDs.Title;
 
 public class MainWindow
 {
@@ -29,6 +33,8 @@ public class MainWindow
     private JList ListaOB;
     private JLabel CatalogMotociclete1;
 
+    //FileWriter myWriter = new FileWriter("Logging.txt", true);
+
     public void Restart(ActionListener a1, ActionListener a2, ActionListener a3, ActionListener a4)
     {
         Next.removeActionListener(a1);
@@ -36,9 +42,8 @@ public class MainWindow
         Next.removeActionListener(a3);
         Next.removeActionListener(a4);
     }
-    public MainWindow()
-     {
-         final int CAPACITY=4;
+    public MainWindow() {
+        final int CAPACITY=4;
          Next.setEnabled(false);
          ArrayList<Motocicleta> moto= new ArrayList<Motocicleta>(CAPACITY);
          ArrayList<Motocicleta> moto2= new ArrayList<Motocicleta>(CAPACITY);
@@ -278,36 +283,19 @@ public class MainWindow
              }
          });
 
+         String[] buttons = {"yes", "no"};
+
          Iesire.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
-                 JDialog exit = new JDialog();
-                 exit.setLayout(new FlowLayout());
-                 exit.add(new JLabel("      Inchideti aplicatia?      "));
-                 JButton da = new JButton("da");
-                 exit.add(da);
-                 da.setPreferredSize(new Dimension(50,50));
-                 JButton nu = new JButton("nu");
-                 exit.add(nu);
-                 nu.setPreferredSize(new Dimension(50,50));
-                 exit.setSize(200, 150);
-                 exit.setLocationRelativeTo(null);
-                 exit.setVisible(true);
 
-                 da.addActionListener ( new ActionListener()
-                 {
-                     public void actionPerformed( ActionEvent e )
-                     {
-                         System.exit(0);
-                     }
-                 });
+                 if (JOptionPane.showConfirmDialog(null, "Inchideti aplicatia?", "exit",
+                         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                     System.exit(0);
 
-                 nu.addActionListener ( new ActionListener()
-                 {
-                     public void actionPerformed( ActionEvent e )
-                     {
-                         exit.setVisible(false);
-                     }
-                 });
+                 } else {
+                     JOptionPane.getRootFrame().dispose();
+                 }
+
              }
          });
      }

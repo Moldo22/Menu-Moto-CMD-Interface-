@@ -9,6 +9,7 @@ public class Logging {
 
     }
     public static Logging getInstance(){
+
         if (null == instance){
             instance = new Logging();
         }
@@ -25,5 +26,4 @@ public class Logging {
             e.printStackTrace();
         }
     }
-
 }
