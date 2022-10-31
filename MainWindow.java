@@ -49,7 +49,23 @@ public class MainWindow
                  String model = Model.getText();
                  //System.out.println("Ni model "+ model);
                  String s = Viteza.getText();
-                 int viteza = Integer.parseInt(s);
+                 int viteza;
+                 try{
+                 viteza = Integer.parseInt(s);
+                 }
+                 catch(NumberFormatException ex) {
+                    Rezultat.setText("Date invalide");
+                    Next.setEnabled(false);
+                    Logging log13=Logging.getInstance();
+                    log13.setMessage("~ERROR: Adaugare~\n");
+                    log13.setMessage("Au fost introduse date invalide\n\n");
+                     Model.setText(null);
+                     Viteza.setText(null);
+                     Categorie.setText(null);
+                     Pret.setText(null);
+                     Next.setEnabled(false);
+                    return;
+                 }
                  //System.out.println("Ni viteza "+viteza);
                  String categorie = Categorie.getText();
                  String s2 = Pret.getText();
@@ -172,7 +188,7 @@ public class MainWindow
                              if (moto.get(i).getModel().equals(model))
                              {
                                  EsteEliminat = true;
-                                 moto.remove(moto.get(i));
+                                 moto.remove(i);
                                  Rezultat.setText("Obiectul a fost eliminat cu succes");
                                  Next.setEnabled(false);
                              }
