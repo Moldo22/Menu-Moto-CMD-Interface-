@@ -288,7 +288,7 @@ public class MainWindow
          Iesire.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
 
-                 if (JOptionPane.showConfirmDialog(null, "Inchideti aplicatia?", "exit",
+                 if (JOptionPane.showConfirmDialog(null, "Inchideti aplicatia?", "Iesire",
                          JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                      System.exit(0);
 
