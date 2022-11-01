@@ -9,7 +9,6 @@ public class Logging {
 
     }
     public static Logging getInstance(){
-
         if (null == instance){
             instance = new Logging();
         }
