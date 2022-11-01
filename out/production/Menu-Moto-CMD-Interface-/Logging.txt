@@ -1,0 +1,11 @@
+Cautare in catalog gol
+Cautare in catalog gol
+~ERROR: Adaugare~
+Au fost introduse date invalide
+
+~ERROR: Eliminare~
+Eliminare din catalog gol
+
+~ERROR: Adaugare~
+Adaugare model existent
+
