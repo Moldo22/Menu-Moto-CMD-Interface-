@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import Package.Motocicleta;
 import Package.Logging;
 
-import static sun.security.util.KnownOIDs.Title;
 
 public class MainWindow
 {
+
     private JPanel panel;
     private JButton Iesire;
     private JButton Adauga;
@@ -33,8 +33,12 @@ public class MainWindow
     private JList ListaOB;
     private JLabel CatalogMotociclete1;
 
-    //FileWriter myWriter = new FileWriter("Logging.txt", true);
     Count k = new Count();
+
+    private static final String userVlad = "Vlad";
+    private static final String passwordVlad = "vladproiect";
+    private static final String userAlex = "Alex";
+    private static final String passwordAlex = "alexproiect";
 
     public void Restart(ActionListener a1, ActionListener a2, ActionListener a3, ActionListener a4)
     {
@@ -70,9 +74,8 @@ public class MainWindow
                      Categorie.setText(null);
                      Pret.setText(null);
                      Next.setEnabled(false);
-                    return;
+                     return;
                  }
-                 //System.out.println("Ni viteza "+viteza);
                  String categorie = Categorie.getText();
                  String s2 = Pret.getText();
                  double pret = Double.parseDouble(s2);
@@ -301,7 +304,14 @@ public class MainWindow
          });
      }
 
+
+
+
     public static void main(String args[]) {
+
+
+
+
         MainWindow main=new MainWindow();
         JFrame frame=new JFrame("ProiectOOP");
         frame.setContentPane(new MainWindow().panel);
@@ -309,7 +319,37 @@ public class MainWindow
         frame.setSize(1000,600);
         main.Next.setVisible(false);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+
+        Frame frame2 = new JFrame("Log In");
+        JLabel ln = new JLabel("Nume:");
+        JTextField tn = new JTextField();
+        JLabel lp = new JLabel("Parola:");
+        JTextField tp = new JTextField();
+        JLabel lbl = new JLabel("");
+        JButton log = new JButton("Login");
+        log.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String nm = tn.getText();
+                String pw = tp.getText();
+                if ((nm.equals(userVlad) && pw.equals(passwordVlad)) || (nm.equals(userAlex) && pw.equals(passwordAlex)))
+                {
+                    frame2.setVisible(false);
+                    frame.setVisible(true);
+                }else {
+                    System.out.println("a intrat in else");
+                    lbl.setText("Nume si parola incorecte");
+                }
+            }
+        });
+        frame2.add(ln);
+        frame2.add(tn);
+        frame2.add(lp);
+        frame2.add(tp);
+        frame2.add(log);
+        frame2.add(lbl);
+        frame2.setSize(500,400);
+        frame2.setLayout(new GridLayout(7,1));
+        frame2.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

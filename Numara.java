@@ -1,4 +1,4 @@
 abstract class Numara {
-    int i = 0;
+     public int i = 0;
     abstract int num();
 }
