@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import Package.Motocicleta;
 import Package.Logging;
 
-
 public class MainWindow
 {
 
@@ -57,7 +56,6 @@ public class MainWindow
              public void actionPerformed(ActionEvent e) {
                  boolean Este = false;
                  String model = Model.getText();
-                 //System.out.println("Ni model "+ model);
                  String s = Viteza.getText();
                  int viteza;
                  try{
@@ -315,7 +313,6 @@ public class MainWindow
         MainWindow main=new MainWindow();
         JFrame frame=new JFrame("ProiectOOP");
         frame.setContentPane(new MainWindow().panel);
-        //frame.pack();
         frame.setSize(1000,600);
         main.Next.setVisible(false);
         frame.setLocationRelativeTo(null);
@@ -336,7 +333,6 @@ public class MainWindow
                     frame2.setVisible(false);
                     frame.setVisible(true);
                 }else {
-                    System.out.println("a intrat in else");
                     lbl.setText("Nume si parola incorecte");
                 }
             }
@@ -348,8 +344,10 @@ public class MainWindow
         frame2.add(log);
         frame2.add(lbl);
         frame2.setSize(500,400);
-        frame2.setLayout(new GridLayout(7,1));
+        frame2.setLayout(new GridLayout(6,1));
+        frame2.setLocationRelativeTo(null);
         frame2.setVisible(true);
+        ((JFrame) frame2).setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

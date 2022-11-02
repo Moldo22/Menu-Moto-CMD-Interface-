@@ -1,14 +1,1 @@
 
-
-1: ~ERROR: Cautare~
-Cautare in catalog gol
-
-2: ~ERROR: Actualizare~
-Introducere date invalide
-
-3: ~ERROR: Medie~
-Media preturilor pentru un numar insuficient de elemente
-
-4: ~ERROR: Eliminare~
-Eliminare din catalog gol
-
