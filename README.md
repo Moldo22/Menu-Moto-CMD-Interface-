@@ -5,7 +5,7 @@ Catalogul este util atat pentru pasionati si colectionari, dar si pentru agentii
 Dupa ce utilizatorul s-a logat in contul personal, acesta va fi intampinat de meniul principal al catalogului:
 ![main](https://user-images.githubusercontent.com/114873344/199324584-1e502395-5124-492b-82d3-dd7f44360df0.png)
 
-Aici va avea la dispozitie mai multe optiuni pentru creearea si intretinerea catalogului precul adaugarea/eliminarea elementelor.
+Aici va avea la dispozitie mai multe optiuni pentru creearea si intretinerea catalogului precum adaugarea/eliminarea elementelor.
 
 
 Informatiile introduse in catalog sunt flexibile, avand optiunea de a modifica datele unui model deja existent.
@@ -18,7 +18,7 @@ in intregime.
 Exista de asemenea si statistici pentru pasionati, cum ar fi media preturilor la un singur buton distanta.
 
 
-Catalogul este implementat pentr confortul utilizatorului, dar si pentru usurinta dezvoltarii proiectului de catre cei ce doresc sa il extinda pentru propriile nevoi,
+Catalogul este implementat pentru confortul utilizatorului, dar si pentru usurinta dezvoltarii proiectului de catre cei ce doresc sa il extinda pentru propriile nevoi,
 fiind implementat intr-un mod usor de urmarit evidentiat de structura acestuia:
 
 
